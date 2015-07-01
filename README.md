@@ -1,2 +1,0 @@
-# ComparePlugin
-ComparePulgin for JDemetra+
