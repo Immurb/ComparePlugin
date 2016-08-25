@@ -30,7 +30,7 @@ import org.openide.util.NbBundle.Messages;
 import org.openide.windows.TopComponent;
 
 /**
- * Top component which displays something.
+ * Compare Plugin UI.
  */
 @ConvertAsProperties(
         dtd = "-//bbk.example.plugin.compare//Compare//EN",
@@ -38,12 +38,11 @@ import org.openide.windows.TopComponent;
 )
 @TopComponent.Description(
         preferredID = "CompareTopComponent",
-        //iconBase="SET/PATH/TO/ICON/HERE",
-        persistenceType = TopComponent.PERSISTENCE_ALWAYS
+        persistenceType = TopComponent.PERSISTENCE_NEVER
 )
 @TopComponent.Registration(mode = "editor", openAtStartup = false)
 @ActionID(category = "Window", id = "bbk.example.plugin.compare.CompareTopComponent")
-@ActionReference(path = "Menu/Window" /*, position = 333 */)
+@ActionReference(path = "Menu/Window")
 @TopComponent.OpenActionRegistration(
         displayName = "#CTL_CompareAction",
         preferredID = "CompareTopComponent"
@@ -67,7 +66,7 @@ public final class CompareTopComponent extends TopComponent {
         setToolTipText(Bundle.HINT_CompareTopComponent());
         toolBarRepresentation = NbComponents.newInnerToolbar();
         runButton = new JButton(DemetraUiIcon.COMPILE_16);
-        runButton.setToolTipText("Run KIX");
+        runButton.setToolTipText("Run");
         initButton();
 
         toolBarRepresentation.add(runButton);
@@ -108,16 +107,7 @@ public final class CompareTopComponent extends TopComponent {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-    @Override
-    public void componentOpened() {
-        // TODO add custom code on component opening
-    }
-
-    @Override
-    public void componentClosed() {
-        // TODO add custom code on component closing
-    }
-
+   
     private void initButton() {
         runButton.addActionListener(new ActionListener() {
 
@@ -148,17 +138,5 @@ public final class CompareTopComponent extends TopComponent {
                 }
             }
         });
-    }
-
-    void writeProperties(java.util.Properties p) {
-        // better to version settings since initial version as advocated at
-        // http://wiki.apidesign.org/wiki/PropertyFiles
-        p.setProperty("version", "1.0");
-        // TODO store your settings
-    }
-
-    void readProperties(java.util.Properties p) {
-        String version = p.getProperty("version");
-        // TODO read your settings according to their version
     }
 }
